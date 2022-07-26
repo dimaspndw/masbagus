@@ -150,7 +150,7 @@
         }
 
         //refresh the page at 23:00:00
-        refreshAt(08, 24, 5);
+        refreshAt(05, 40, 0);
     </script>
 
 </body>

@@ -29,10 +29,11 @@ class PengunjungController extends Controller
     public function refresh()
     {
         $now = Carbon::now()->format('Y-m-d');
-        $indonesianformat = Carbon::now()->format('d-m-Y');
+        date_default_timezone_set('Asia/Jakarta');
+        $indonesianformat = date('d-m-Y H:i:s');
         $pengunjung = Pengunjung::where('created_at', 'LIKE', "%{$now}%")->get();
         $pdf = PDF::loadview('pengunjung', compact('pengunjung', 'indonesianformat'));
-        $name = 'laporan-data-pengunjung' . $now . '.pdf';
+        $name =  $now . ' laporan-data-pengunjung.pdf';
         Storage::put('/public/data/' . $name, $pdf->output());
     }
 }

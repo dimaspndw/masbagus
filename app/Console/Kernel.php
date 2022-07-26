@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sg:download-file')->dailyAt('08:24')->timezone('Asia/Jakarta')
+        $schedule->command('sg:download-file')->everyMinute()->timezone('Asia/Jakarta')
             ->onSuccess(function () {
                 echo "------------------> Berhasil didownload <------------------\n";
             })
