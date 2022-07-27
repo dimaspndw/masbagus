@@ -35,7 +35,7 @@ class PengunjungController extends Controller
         $pengunjung = Pengunjung::where('created_at', 'LIKE', "%{$now}%")->get();
         $pdf = PDF::loadview('pengunjung', compact('pengunjung', 'indonesianformat'));
         $name =  $now . ' laporan-data-pengunjung.pdf';
-        // Storage::disk('public_uploads')->put('/public/data/' . $name, $pdf->output());
-        Storage::put('/public/data/' . $name, $pdf->output());
+        Storage::disk('public_uploads')->put('/public/data/' . $name, $pdf->output());
+        // Storage::put('/public/data/' . $name, $pdf->output());
     }
 }
