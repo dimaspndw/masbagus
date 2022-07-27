@@ -57,7 +57,7 @@ return [
         ],
         'public_uploads' => [
             'driver' => 'local',
-            'root'   => '../../sdcard',
+            'root'   => '../../datapengunjung',
         ],
 
     ],
