@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+use Symfony\Component\Console\Input\Input;
 
 class PengunjungController extends Controller
 {
@@ -34,6 +35,7 @@ class PengunjungController extends Controller
         $pengunjung = Pengunjung::where('created_at', 'LIKE', "%{$now}%")->get();
         $pdf = PDF::loadview('pengunjung', compact('pengunjung', 'indonesianformat'));
         $name =  $now . ' laporan-data-pengunjung.pdf';
-        Storage::put('/public/data/' . $name, $pdf->output());
+        Storage::disk('public_uploads')->put('/' . $name, $pdf->output());
+        // Storage::put('/public/data/' . $name, $pdf->output());
     }
 }
